@@ -1,0 +1,89 @@
+<div class="container">
+    <h1>Lista de Compras</h1>
+    
+    <form #frm="ngForm" class="add-item-form" (ngSubmit)="adicionarItem()">
+        <div class="form-group">
+            <input type="text"
+                name="item"
+                id="item-name"
+                [(ngModel)]="item"
+                placeholder="Digite o nome do item"
+                required>
+            <input
+                type="number"
+                name="preco"
+                id="item-preco"
+                class="msides"
+                [(ngModel)]="preco"
+                placeholder="Digite o preço unitário"
+                required>
+            <input
+                type="number"
+                name="quantidade"
+                id="item-quantidade"
+                [(ngModel)]="quantidade"
+                placeholder="Digite a quantidade"
+                required>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="submit-btn msides">
+                Adicionar
+            </button>
+            <button type="reset" class="reset-btn msides" (click)="limparLista()">
+                Limpar lista
+            </button>
+        </div>
+    </form>
+    
+    <table class="item-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Preço unitário</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>✔</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(lista.length > 0) {
+                @for(item of lista; track item.id) {
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td><span [ngClass]="{'item-riscado': item.comprado === true}">{{ item.nome }}</span></td>
+                        <td>
+                            <span class="item-preco" [ngClass]="{'item-riscado': item.comprado === true}">R$ {{ item.preco | number: '1.2-2' }}</span>
+                        </td>
+                        <td>
+                            <span class="item-quantidade" [ngClass]="{'item-riscado': item.comprado === true}">{{ item.quantidade }}</span>
+                        </td>
+                        <td>
+                            <span class="item-preco-total" [ngClass]="{'item-riscado': item.comprado === true}">
+                                R$ {{ (item.preco * item.quantidade) | number: '1.2-2' }}
+                            </span>
+                            <td>
+                                <input type="checkbox" 
+                                (click)="riscarItem(item)" 
+                                [checked]="item.comprado">
+                            </td>
+                        </tr>
+                        
+                    }
+                    <tr>
+                        <td colspan="3" class="total-label">Total:</td>
+                        <td class="total-value" colspan="3">
+                            R$ {{ getTotal() | number: '1.2-2' }}
+                        </td>
+                    </tr>
+                } @else {
+                    <tr>
+                        <td class="empty-list" colspan="6">
+                            Nenhum item adicionado até o momento.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
