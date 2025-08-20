@@ -4,30 +4,28 @@ Exercício de aplicação em **Angular** que implementa um sistema de **lista de
 
 ---
 
-##  Tecnologias Utilizadas
+##  Tecnologias utilizadas
 
 - **Angular CLI** (versão 20.0.1)
 - **TypeScript**, **HTML**, **SCSS**  
 
 ---
 
-## Funcionalidades (possíveis)
+## Funcionalidades 
 
-- Adição de itens na lista de compras;
-- Limpeza da lista de compras;
-- Marcação de itens como comprados;
-- Persistência simples (via localStorage);
-- Apresentação do valor unitário, valor total (pela quantidade do item) e valor final da compra.
-
-*Observação: ajuste estas funcionalidades de acordo com o que está implementado no seu código.*
+1. Adição de itens na lista de compras;
+2. Limpeza da lista de compras;
+3. Marcação de itens como comprados;
+4. Persistência simples (via localStorage);
+5. Apresentação do valor unitário, valor total (pela quantidade do item) e valor final da compra.
 
 ---
 
-## Guia de Instalação
+## Instalação
 
 ### Pré-requisitos
 
-- **Angular CLI** (recomendado instalar globalmente com `npm install -g @angular/cli`)
+- **Angular CLI** (versão 20.0.1, recomendado instalar globalmente com `npm install -g @angular/cli`)
 
 ### Passos
 
